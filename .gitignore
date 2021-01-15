@@ -1,0 +1,13 @@
+rastamat/*
+!rastamat/.gitkeep
+
+faltas_polo_polo/*
+!faltas_polo_polo/.gitkeep
+
+faltas_polo_terra/*
+!faltas_polo_terra/.gitkeep
+
+coleta_dados/*
+!coleta_dados/.gitkeep
+
+*.asv

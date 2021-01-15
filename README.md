@@ -1,2 +1,4 @@
 # Fault Location in VSC HVDC
- Este repositÃ³rio consiste nos arquivos utlizados para localizaÃ§Ã£o de faltas em linhas de transmissÃ£o de alta tensÃ£o em corrente contÃ­nua
+Este repositório consiste nos arquivos utlizados para localização de faltas em linhas de transmissão de alta tensão em corrente contínua
+
+Obs.: Este repositório está em processo de atualização!
