@@ -1,9 +1,9 @@
 # Fault Location in VSC HVDC
 Este repositório consiste nos arquivos utlizados para localização de faltas em linhas de transmissão de alta tensão em corrente contínua.
 
-##Métodos utilizados!
+## Métodos utilizados!
 
-###Método 1: Utilização de uma Rede Neural Artificial.
+### Método 1: Utilização de uma Rede Neural Artificial.
 
 - Este método consite em obter os dados a partir das simulações de faltas em sistemas HVDC e aplicar entradas em uma RNA, sendo a saída a distância na linha de transmissão onde ocorreu a falta.
 
