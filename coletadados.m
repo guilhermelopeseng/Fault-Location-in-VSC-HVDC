@@ -62,15 +62,7 @@ save(caminhoSave)
 %% 1 método - Somente RNA - Faltas Polo Terra
 
 %----------Variáveis de entrada para RNA ------------%
-valormaximo = [];
-valorminimo = [];
-mediaprefalta = [];
-mediafalta = [];
-mediaposfalta = [];
-variancia = [];
-energiaprefalta = [];
-energiafalta = [];
-energiaposfalta = [];
+base = [];
 %----------Variáveis de saída para RNA -------------%
 distanciaFaltas = [];
 
@@ -92,15 +84,15 @@ for localizacao = 5:5:195
             
             load(nameCom);
             
-            valormaximo(cont,:) = max(correnteretificadorpos.Data);%pega somente o valor maximo 
+            base(1,cont) = max(correnteretificadorpos.Data);
             
-            valorminimo(cont,:) = min(correnteretificadorpos.Data);
+            base(2,cont) = min(correnteretificadorpos.Data);
             
-            mediaprefalta(cont,:) = mean(correnteretificadorpos.Data(1:2700,1));
-            mediafalta(cont,:) = mean(correnteretificadorpos.Data(2700:4725,1));
-            mediaposfalta(cont,:) = mean(correnteretificadorpos.Data(4725:13500,1));
-            
-            variancia(cont,:) = var(correnteretificadorpos.Data);
+            base(3,cont) = mean(correnteretificadorpos.Data(1:2700,1));
+            base(4,cont) = mean(correnteretificadorpos.Data(2700:4725,1));
+            base(5,cont) = mean(correnteretificadorpos.Data(4725:13500,1));
+          
+            base(6,cont) = var(correnteretificadorpos.Data);
             
             Ym = correnteretificadorpos.Data(1:2700,1);
             Yq = Ym.^2;
@@ -108,19 +100,18 @@ for localizacao = 5:5:195
             Yq1 = Ym1.^2;
             Ym2 = correnteretificadorpos.Data(4725:13500,1);
             Yq2 = Ym2.^2;
-            energiaprefalta(cont,:) = sum(Yq(:));
-            energiafalta(cont,:) = sum(Yq1(:));
-            energiaposfalta(cont,:) = sum(Yq2(:));
+            base(7,cont) = sum(Yq(:));
+            base(8,cont) = sum(Yq1(:));
+            base(9,cont) = sum(Yq2(:));
             
-            distanciaFaltas(cont,:) = localizacao/200;
-            resistenciaFaltas(cont,:) = resistencia;
+            distanciaFaltas(:,cont) = localizacao/200;
+            resistenciaFaltas(:,cont) = resistencia;
             
             cont=cont+1;
         end
     end
 end
 save(caminhoSave)
-
 %% 2 método - RNA e Wavelet Transform - Faltas Polo Polo
 
 %------------------Variáveis para entrada da RNA ---------------------%
