@@ -10,4 +10,7 @@ faltas_polo_terra/*
 coleta_dados/*
 !coleta_dados/.gitkeep
 
+resultados_redes_neurais/*
+!resultados_redes_neurais/.gitkeep
+
 *.asv
