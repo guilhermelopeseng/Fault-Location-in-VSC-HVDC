@@ -115,20 +115,7 @@ save(caminhoSave)
 %% 2 método - RNA e Wavelet Transform - Faltas Polo Polo
 
 %------------------Variáveis para entrada da RNA ---------------------%
-valormaximo41 = [];
-valormaximo42 = [];
-valormaximo43 = [];
-valormaximo44 = [];
-valormaximo45 = [];
-valormaximo46 = [];
-valormaximo47 = [];
-valormaximo48 = [];
-valormaximo49 = [];
-valormaximo410 = [];
-valormaximo411 = [];
-valormaximo412 = [];
-valormaximo413 = [];
-valormaximo414 = [];
+base = [];
 %-----------------------Variáveis de saída para RNA--------------%
 distanciaFaltas = [];
 %-----------------------Variáveis globais ----------------------%
@@ -148,51 +135,13 @@ for localizacao = 5:5:195
         if(exist(nameCom,'file') == 2)
             load(nameCom);
             c = wpdec(correnteretificadorpos.Data(2700:3067,1),4,'db1');
-           %Obstenção dos coeficientes da wavelet transform 
-            cfs41 = wpcoef(c,[4 1]);
-            valormaximo41(cont,:) = max(cfs41);
-           
-            cfs42 = wpcoef(c,[4 2]);
-            valormaximo42(cont,:) = max(cfs42);
-           
-            cfs43 = wpcoef(c,[4 3]);
-            valormaximo43(cont,:) = max(cfs43);
-           
-            cfs44 = wpcoef(c,[4 4]);
-            valormaximo44(cont,:) = max(cfs44);
-           
-            cfs45 = wpcoef(c,[4 5]);
-            valormaximo45(cont,:) = max(cfs45);
-           
-            cfs46 = wpcoef(c,[4 6]);
-            valormaximo46(cont,:) = max(cfs46);
-          
-            cfs47 = wpcoef(c,[4 7]);
-            valormaximo47(cont,:) = max(cfs47);
-           
-            cfs48 = wpcoef(c,[4 8]);
-            valormaximo48(cont,:) = max(cfs48);
-           
-            cfs49 = wpcoef(c,[4 9]);
-            valormaximo49(cont,:) = max(cfs49);
-           
-            cfs410 = wpcoef(c,[4 10]);
-            valormaximo410(cont,:) = max(cfs410);
+           %Obstenção dos coeficientes da wavelet transform
+           for k = 0:1:15
+               base(k+1,cont) = max(wpcoef(c, [4 k]));
+           end
             
-            cfs411 = wpcoef(c,[4 11]);
-            valormaximo411(cont,:) = max(cfs411);
-           
-            cfs412 = wpcoef(c,[4 12]);
-            valormaximo412(cont,:) = max(cfs412);
-           
-            cfs413 = wpcoef(c,[4 13]);
-            valormaximo413(cont,:) = max(cfs413);
-            
-            cfs414 = wpcoef(c,[4 14]);
-            valormaximo414(cont,:) = max(cfs414);
-            
-            distanciaFaltas(cont,:) = localizacao/200;
-            resistenciaFaltas(cont,:) = resistencia;
+            distanciaFaltas(:,cont) = localizacao/200;
+            resistenciaFaltas(:,cont) = resistencia;
             
             cont=cont+1;
         end
@@ -204,20 +153,7 @@ save(caminhoSave)
 %% 2 método - RNA e Wavelet Transform - Faltas Polo Terra
 
 %------------------Variáveis para entrada da RNA ---------------------%
-valormaximo41 = [];
-valormaximo42 = [];
-valormaximo43 = [];
-valormaximo44 = [];
-valormaximo45 = [];
-valormaximo46 = [];
-valormaximo47 = [];
-valormaximo48 = [];
-valormaximo49 = [];
-valormaximo410 = [];
-valormaximo411 = [];
-valormaximo412 = [];
-valormaximo413 = [];
-valormaximo414 = [];
+base = [];
 %-----------------------Variáveis de saída para RNA--------------%
 distanciaFaltas = [];
 %-----------------------Variáveis globais ----------------------%
@@ -237,51 +173,13 @@ for localizacao = 5:5:195
         if(exist(nameCom,'file') == 2)
             load(nameCom);
             c = wpdec(correnteretificadorpos.Data(2700:3067,1),4,'db1');
-           %Obstenção dos coeficientes da wavelet transform 
-            cfs41 = wpcoef(c,[4 1]);
-            valormaximo41(cont,:) = max(cfs41);
-           
-            cfs42 = wpcoef(c,[4 2]);
-            valormaximo42(cont,:) = max(cfs42);
-           
-            cfs43 = wpcoef(c,[4 3]);
-            valormaximo43(cont,:) = max(cfs43);
-           
-            cfs44 = wpcoef(c,[4 4]);
-            valormaximo44(cont,:) = max(cfs44);
-           
-            cfs45 = wpcoef(c,[4 5]);
-            valormaximo45(cont,:) = max(cfs45);
-           
-            cfs46 = wpcoef(c,[4 6]);
-            valormaximo46(cont,:) = max(cfs46);
-          
-            cfs47 = wpcoef(c,[4 7]);
-            valormaximo47(cont,:) = max(cfs47);
-           
-            cfs48 = wpcoef(c,[4 8]);
-            valormaximo48(cont,:) = max(cfs48);
-           
-            cfs49 = wpcoef(c,[4 9]);
-            valormaximo49(cont,:) = max(cfs49);
-           
-            cfs410 = wpcoef(c,[4 10]);
-            valormaximo410(cont,:) = max(cfs410);
+           %Obstenção dos coeficientes da wavelet transform
+           for k = 0:1:15
+               base(k+1,cont) = max(wpcoef(c, [4 k]));
+           end
             
-            cfs411 = wpcoef(c,[4 11]);
-            valormaximo411(cont,:) = max(cfs411);
-           
-            cfs412 = wpcoef(c,[4 12]);
-            valormaximo412(cont,:) = max(cfs412);
-           
-            cfs413 = wpcoef(c,[4 13]);
-            valormaximo413(cont,:) = max(cfs413);
-            
-            cfs414 = wpcoef(c,[4 14]);
-            valormaximo414(cont,:) = max(cfs414);
-            
-            distanciaFaltas(cont,:) = localizacao/200;
-            resistenciaFaltas(cont,:) = resistencia;
+            distanciaFaltas(:,cont) = localizacao/200;
+            resistenciaFaltas(:,cont) = resistencia;
             
             cont=cont+1;
         end
