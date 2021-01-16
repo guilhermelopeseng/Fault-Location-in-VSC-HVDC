@@ -193,7 +193,7 @@ save(caminhoSave)
 addpath(genpath('C:\Users\guilh\OneDrive\Documentos\IC 2021\Fault-Location-in-VSC-HVDC\rastamat'));
 
 %----------------------------Variáveis de Entrada da RNA -----------------%
-mfccGeral = [];
+base = [];
 %----------------------------Variável de Saída da RNA --------------------%
 distanciaFalta = [];
 %----------------------------Variáveis Globais ---------------------------%
@@ -222,10 +222,10 @@ for localizacao = 5:5:195
             time = (correnteretificadorpos.Time(fim)-correnteretificadorpos.Time(inicio));
             [mm,aspc] = melfcc(sinal, fs, 'maxfreq', fs/2, 'numcep', numCep, 'dcttype', 1, 'wintime', time, 'hoptime', time/2, 'preemph', 0);
             
-            mfccGeral(cont,:) = mm;
+            base(:,cont) = mm;
             
-            distanciaFaltas(cont,:) = localizacao/200;
-            resistenciaFaltas(cont,:) = resistencia;
+            distanciaFaltas(:,cont) = localizacao/200;
+            resistenciaFaltas(:,cont) = resistencia;
             
             cont=cont+1;
         end
@@ -238,7 +238,7 @@ save(caminhoSave)
 addpath(genpath('C:\Users\guilh\OneDrive\Documentos\IC 2021\Fault-Location-in-VSC-HVDC\rastamat'));
 
 %----------------------------Variáveis de Entrada da RNA -----------------%
-mfccGeral = [];
+base = [];
 %----------------------------Variável de Saída da RNA --------------------%
 distanciaFalta = [];
 %----------------------------Variáveis Globais ---------------------------%
@@ -267,10 +267,10 @@ for localizacao = 5:5:195
             time = (correnteretificadorpos.Time(fim)-correnteretificadorpos.Time(inicio));
             [mm,aspc] = melfcc(sinal, fs, 'maxfreq', fs/2, 'numcep', numCep, 'dcttype', 1, 'wintime', time, 'hoptime', time/2, 'preemph', 0);
             
-            mfccGeral(cont,:) = mm;
+            base(:,cont) = mm;
             
-            distanciaFaltas(cont,:) = localizacao/200;
-            resistenciaFaltas(cont,:) = resistencia;
+            distanciaFaltas(:,cont) = localizacao/200;
+            resistenciaFaltas(:,cont) = resistencia;
             
             cont=cont+1;
         end
