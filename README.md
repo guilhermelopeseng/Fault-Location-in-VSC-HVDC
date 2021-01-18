@@ -3,7 +3,7 @@ Este repositório consiste nos arquivos utlizados para localização de faltas e
 
 ## Simulação!
 
- * Foi utilizado o sistema VSC-HVDC disponibilizado pelo Simulink, onde as faltas que vieram com o modelo foram retiradas. O sistema utilizado pode ser encontrados nos arquivos:
+ * Foi utilizado o sistema VSC-HVDC disponibilizado pelo Simulink, onde as faltas que vieram com o modelo foram retiradas. O sistema utilizado podem ser encontrados nos arquivos:
     * sistema_polo_polo.slx
     * sistema_polo_terra.slx
  * Algumas configurações do sistema:
