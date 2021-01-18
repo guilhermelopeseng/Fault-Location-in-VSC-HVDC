@@ -52,3 +52,5 @@ Algumas configurações do MFCC:
 * Número de Cepstrais: 20
 * Unica janela com 515 amostras. 
 
+OBS.: Este repositório ainda está em processo de atualização!
+
