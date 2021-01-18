@@ -13,6 +13,7 @@ Este repositório consiste nos arquivos utlizados para localização de faltas e
     * Capacitância por unidade de comprimento: 2.31 x 10e-07 F/km
     * Número de seções pi: 4
  - Demais configurações podem ser encontradas no help no matlab!
+ - Os valores foram calculados no sinal de corrente no polo positivo do retificador.
 
 ## Métodos utilizados!
 
@@ -30,8 +31,7 @@ Foram aplicadas as seguinte entradas:
 * Energia pré falta
 * Energia na falta
 * Energia pós falta
-
-De modo que esses valores foram calculados no sinal de corrente no polo positivo do retificador. 
+ 
 
 
 ### Método 2: Utilização de uma Rede Neural Artificial com processamento por Transformada Wavelet Packet.
