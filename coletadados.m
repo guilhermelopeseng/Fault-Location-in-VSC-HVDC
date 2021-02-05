@@ -20,7 +20,7 @@ caminhoSave = './coleta_dados/primeiro_metodo_polo_polo.mat';
 
 %----------Loop para coleta-------------------------%
 for localizacao = 5:5:195
-    for resistencia = 5:5:150
+    for resistencia = 5:5:50
         % Obtenção do nome do arquivo da simulação
         nameLoc = sprintf('L%.0f', localizacao);
         nameRes = sprintf('R%.3f', resistencia);
@@ -74,7 +74,7 @@ caminhoSave = './coleta_dados/primeiro_metodo_polo_terra.mat';
 
 %----------Loop para coleta-------------------------%
 for localizacao = 5:5:195
-    for resistencia = 5:5:150
+    for resistencia = 5:5:50
         % Obtenção do nome do arquivo da simulação
         nameLoc = sprintf('L%.0f', localizacao);
         nameRes = sprintf('R%.3f', resistencia);
@@ -128,7 +128,95 @@ caminhoSave = './coleta_dados/primeiro_metodo.mat';
 
 %----------Loop para coleta-------------------------%
 for localizacao = 5:5:195
-    for resistencia = 5:5:150
+    for resistencia = 5:5:50
+        % Obtenção do nome do arquivo da simulação
+        nameLoc = sprintf('L%.0f', localizacao);
+        nameRes = sprintf('R%.3f', resistencia);
+        nameCom = strcat(caminho_polo_terra,nameLoc, nameRes, mat);
+        %Obtenção dos dados referente ao arquivo polo_terra
+        if(exist(nameCom,'file') == 2)
+            
+            load(nameCom);
+            
+            base(1,cont) = max(correnteretificadorpos.Data);
+            
+            base(2,cont) = min(correnteretificadorpos.Data);
+            
+            base(3,cont) = mean(correnteretificadorpos.Data(1:2700,1));
+            base(4,cont) = mean(correnteretificadorpos.Data(2700:4725,1));
+            base(5,cont) = mean(correnteretificadorpos.Data(4725:13500,1));
+          
+            base(6,cont) = var(correnteretificadorpos.Data);
+            
+            Ym = correnteretificadorpos.Data(1:2700,1);
+            Yq = Ym.^2;
+            Ym1 = correnteretificadorpos.Data(2700:4725,1);
+            Yq1 = Ym1.^2;
+            Ym2 = correnteretificadorpos.Data(4725:13500,1);
+            Yq2 = Ym2.^2;
+            base(7,cont) = sum(Yq(:));
+            base(8,cont) = sum(Yq1(:));
+            base(9,cont) = sum(Yq2(:));
+            
+            distanciaFaltas(:,cont) = localizacao/200;
+            resistenciaFaltas(:,cont) = resistencia;
+            
+            cont=cont+1;
+        end
+        % Obtenção do nome do arquivo da simulação
+        nameLoc = sprintf('L%.0f', localizacao);
+        nameRes = sprintf('R%.3f', resistencia);
+        nameCom = strcat(caminho_polo_polo,nameLoc, nameRes, mat);
+        %Obtenção dos dados referente ao arquivo polo_polo
+        if(exist(nameCom,'file') == 2)
+            
+            load(nameCom);
+            
+            base(1,cont) = max(correnteretificadorpos.Data);
+            
+            base(2,cont) = min(correnteretificadorpos.Data);
+            
+            base(3,cont) = mean(correnteretificadorpos.Data(1:2700,1));
+            base(4,cont) = mean(correnteretificadorpos.Data(2700:4725,1));
+            base(5,cont) = mean(correnteretificadorpos.Data(4725:13500,1));
+          
+            base(6,cont) = var(correnteretificadorpos.Data);
+            
+            Ym = correnteretificadorpos.Data(1:2700,1);
+            Yq = Ym.^2;
+            Ym1 = correnteretificadorpos.Data(2700:4725,1);
+            Yq1 = Ym1.^2;
+            Ym2 = correnteretificadorpos.Data(4725:13500,1);
+            Yq2 = Ym2.^2;
+            base(7,cont) = sum(Yq(:));
+            base(8,cont) = sum(Yq1(:));
+            base(9,cont) = sum(Yq2(:));
+            
+            distanciaFaltas(:,cont) = localizacao/200;
+            resistenciaFaltas(:,cont) = resistencia;
+            
+            cont=cont+1;
+        end
+    end
+end
+save(caminhoSave)
+%% 1 método - Somente RNA - Faltas Polo Terra e Polo Polo com classificador
+
+%----------Variáveis de entrada para RNA ------------%
+base = [];
+%----------Variáveis de saída para RNA -------------%
+distanciaFaltas = [];
+
+%---------Variáveis globais-------------------------%
+cont = 1;
+mat = '.mat';
+caminho_polo_terra = './faltas_polo_terra/';
+caminho_polo_polo = './faltas_polo_polo/';
+caminhoSave = './coleta_dados/primeiro_metodo.mat';
+
+%----------Loop para coleta-------------------------%
+for localizacao = 5:5:195
+    for resistencia = 5:5:50
         % Obtenção do nome do arquivo da simulação
         nameLoc = sprintf('L%.0f', localizacao);
         nameRes = sprintf('R%.3f', resistencia);
