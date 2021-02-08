@@ -6,6 +6,8 @@ clear all
 %Universidade Federal do Piauí
 
 %% Treinamento da Rede Neural para faltas Polo Polo
+clc
+clear all
 load('./coleta_dados/segundo_metodo_polo_polo');
 
 % -------------------- Variáveis Globais---------------------------------
@@ -53,12 +55,12 @@ for i = 1:1:quant_entradas
 end
 
 %---------------Treinamento da RNA----------------------------------------
-rede = newff( Matriz, [18 3 1], {'tansig' 'tansig' 'purelin'});
+rede = newff( Matriz, [12 3 1], {'tansig' 'tansig' 'purelin'});
 rede.trainParam.showWindow = true; 
 rede.trainParam.mu = 0.001;
 rede.trainParam.mu_dec = 0.1;
 rede.trainParam.mu_inc = 9;
-rede.trainParam.epochs = 400;%número de épocas desejadas
+rede.trainParam.epochs = 30;%número de épocas desejadas
 rede.trainParam.goal = 1e-12;%erro final desejado
 rede.trainParam.show = 20;
 NET = train(rede, entrada_treinamento, saida_treinamento);
@@ -84,6 +86,8 @@ desvio_padrao = std(erro)
 save('./resultados_redes_neurais/segundo_metodo_polo_polo.mat');
 
 %% Treinamento da Rede Neural para faltas Polo Terra
+clc
+clear all
 load('./coleta_dados/segundo_metodo_polo_terra');
 
 % -------------------- Variáveis Globais---------------------------------
@@ -131,12 +135,12 @@ for i = 1:1:quant_entradas
 end
 
 %---------------Treinamento da RNA----------------------------------------
-rede = newff( Matriz, [18 3 1], {'tansig' 'tansig' 'purelin'});
+rede = newff( Matriz, [18 2 1], {'tansig' 'tansig' 'purelin'});
 rede.trainParam.showWindow = true; 
 rede.trainParam.mu = 0.001;
 rede.trainParam.mu_dec = 0.1;
 rede.trainParam.mu_inc = 9;
-rede.trainParam.epochs = 400;%número de épocas desejadas
+rede.trainParam.epochs = 20;%número de épocas desejadas
 rede.trainParam.goal = 1e-12;%erro final desejado
 rede.trainParam.show = 20;
 NET = train(rede, entrada_treinamento, saida_treinamento);
@@ -162,6 +166,8 @@ desvio_padrao = std(erro)
 save('./resultados_redes_neurais/segundo_metodo_polo_terra.mat');
 
 %% Treinamento da Rede Neural para faltas Polo Terra e Polo Polo sem classificador
+clc
+clear all
 load('./coleta_dados/segundo_metodo');
 
 % -------------------- Variáveis Globais---------------------------------
@@ -214,7 +220,7 @@ rede.trainParam.showWindow = true;
 rede.trainParam.mu = 0.001;
 rede.trainParam.mu_dec = 0.1;
 rede.trainParam.mu_inc = 9;
-rede.trainParam.epochs = 400;%número de épocas desejadas
+rede.trainParam.epochs = 30;%número de épocas desejadas
 rede.trainParam.goal = 1e-12;%erro final desejado
 rede.trainParam.show = 20;
 NET = train(rede, entrada_treinamento, saida_treinamento);
