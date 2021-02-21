@@ -39,7 +39,7 @@ Foram aplicadas as seguinte entradas:
 - Este método consiste em processar os dados obtidos das simulações de faltas em sistemas HVDC com a Transformada Wavelet Packet e inserir os valores máximos dos coeficientes em uma RNA, sendo a saída a distância da linha de transmissão onde ocorreu a falta. 
 
 Algumas configuração da Wavelet:
-* Familia: db2
+* Familia: db1
 * Nível: 4º nivel
 * Janela escolhida é composto por 368 dados. 
 
