@@ -20,7 +20,7 @@ caminhoSave = './coleta_dados/primeiro_metodo_polo_polo.mat';
 
 %----------Loop para coleta-------------------------%
 for localizacao = 5:5:195
-    for resistencia = 5:5:50
+    for resistencia = 55:5:100
         % Obtenção do nome do arquivo da simulação
         nameLoc = sprintf('L%.0f', localizacao);
         nameRes = sprintf('R%.3f', resistencia);
@@ -74,7 +74,7 @@ caminhoSave = './coleta_dados/primeiro_metodo_polo_terra.mat';
 
 %----------Loop para coleta-------------------------%
 for localizacao = 5:5:195
-    for resistencia = 5:5:50
+    for resistencia = 55:5:100
         % Obtenção do nome do arquivo da simulação
         nameLoc = sprintf('L%.0f', localizacao);
         nameRes = sprintf('R%.3f', resistencia);
@@ -128,7 +128,7 @@ caminhoSave = './coleta_dados/primeiro_metodo.mat';
 
 %----------Loop para coleta-------------------------%
 for localizacao = 5:5:195
-    for resistencia = 5:5:50
+    for resistencia = 55:5:100
         % Obtenção do nome do arquivo da simulação
         nameLoc = sprintf('L%.0f', localizacao);
         nameRes = sprintf('R%.3f', resistencia);
@@ -214,7 +214,7 @@ caminhoSave = './coleta_dados/segundo_metodo_polo_polo.mat';
 cont = 1;
 %--------------------Loop para coleta dos dados------------------%
 for localizacao = 5:5:195
-    for resistencia = 5:5:50
+    for resistencia = 55:5:100
         % Obtenção do nome do arquivo da simulação
         nameLoc = sprintf('L%.0f', localizacao);
         nameRes = sprintf('R%.3f', resistencia);
@@ -252,7 +252,7 @@ caminhoSave = './coleta_dados/segundo_metodo_polo_terra.mat';
 cont = 1;
 %--------------------Loop para coleta dos dados------------------%
 for localizacao = 5:5:195
-    for resistencia = 5:5:50
+    for resistencia = 55:5:100
         % Obtenção do nome do arquivo da simulação
         nameLoc = sprintf('L%.0f', localizacao);
         nameRes = sprintf('R%.3f', resistencia);
@@ -291,7 +291,7 @@ caminhoSave = './coleta_dados/segundo_metodo.mat';
 cont = 1;
 %--------------------Loop para coleta dos dados------------------%
 for localizacao = 5:5:195
-    for resistencia = 5:5:50
+    for resistencia = 55:5:100
         % Obtenção do nome do arquivo da simulação
         nameLoc = sprintf('L%.0f', localizacao);
         nameRes = sprintf('R%.3f', resistencia);
@@ -354,7 +354,7 @@ caminhoSave = './coleta_dados/terceiro_metodo_polo_polo.mat';
 cont = 1;
 
 for localizacao = 5:5:195
-    for resistencia = 5:5:50
+    for resistencia = 55:5:100
         % Obtenção do nome do arquivo da simulação
         nameLoc = sprintf('L%.0f', localizacao);
         nameRes = sprintf('R%.3f', resistencia);
@@ -399,7 +399,7 @@ caminhoSave = './coleta_dados/terceiro_metodo_polo_terra.mat';
 cont = 1;
 
 for localizacao = 5:5:195
-    for resistencia = 5:5:50
+    for resistencia = 55:5:100
         % Obtenção do nome do arquivo da simulação
         nameLoc = sprintf('L%.0f', localizacao);
         nameRes = sprintf('R%.3f', resistencia);
@@ -423,7 +423,7 @@ for localizacao = 5:5:195
 end
 save(caminhoSave)
 
-%% 3 método - RNA e Coeficientes Mel Cepstrais - Faltas Polo Terra
+%% 3 método - RNA e Coeficientes Mel Cepstrais - Faltas Polo Terra Polo Polo
 % Adicionar Path do MFCC
 addpath(genpath('C:\Users\guilh\OneDrive\Documentos\IC 2021\Fault-Location-in-VSC-HVDC\rastamat'));
 
@@ -445,7 +445,7 @@ caminhoSave = './coleta_dados/terceiro_metodo.mat';
 cont = 1;
 
 for localizacao = 5:5:195
-    for resistencia = 5:5:50
+    for resistencia = 55:5:100
         % Obtenção do nome do arquivo da simulação
         nameLoc = sprintf('L%.0f', localizacao);
         nameRes = sprintf('R%.3f', resistencia);

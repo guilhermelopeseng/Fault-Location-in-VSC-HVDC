@@ -41,4 +41,4 @@ diferenca_polo_terra = abs(media_polo_terra_pos + media_polo_terra_neg);
 
 max(diferenca_polo_polo)
 min(diferenca_polo_terra)
-% Menor que 0.15 falta polo polo maior que 0.1 falta polo terra
+% Menor que 0.15 falta polo polo maior é falta polo terra
