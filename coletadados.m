@@ -177,12 +177,19 @@ for localizacao = 10:10:190
         nameCom = strcat(caminho,nameLoc, nameRes, mat);
         if(exist(nameCom,'file') == 2)
             load(nameCom);
-            c = wpdec(correnteretificadorpos.Data(2700:3067,1),4,'db1');
+            c = wpdec(correnteretificadorpos.Data(2700:3067,1),4,'sym2');
             %Obstenção dos coeficientes da wavelet transform
+            inicial_valores = wpcoef(c, [0 0]);
+            quadrado_inicial_valores = inicial_valores.^2;
+            total_inical_valores = sum(quadrado_inicial_valores(:));
+            
             for k = 0:1:15
-                base(k+1,cont) = max(wpcoef(c, [4 k]));
+                quarta_camada = wpcoef(c, [4 k]);
+                quadrado_quarta_camada = quarta_camada.^2;
+                total_quarta_camada = sum(quadrado_quarta_camada(:));
+                base(k+1,cont) = total_quarta_camada/total_inical_valores;
             end
-       
+            
             distanciaFaltas(:,cont) = localizacao/200;
             resistenciaFaltas(:,cont) = resistencia;
             cont=cont+1;
