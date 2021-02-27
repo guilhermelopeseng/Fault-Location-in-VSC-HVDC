@@ -61,7 +61,7 @@ rede.trainParam.showWindow = true;
 rede.trainParam.mu = 0.001;
 rede.trainParam.mu_dec = 0.1;
 rede.trainParam.mu_inc = 9;
-rede.trainParam.epochs = 100;%número de épocas desejadas
+rede.trainParam.epochs = 80;%número de épocas desejadas
 rede.trainParam.goal = 1e-07;%erro final desejado
 rede.trainParam.show = 20;
 NET = train(rede, entrada_treinamento, saida_treinamento);
@@ -137,12 +137,12 @@ for i = 1:1:quant_entradas
 end
 
 %---------------Treinamento da RNA----------------------------------------
-rede = newff( Matriz, [12 2 1], {'tansig' 'tansig' 'purelin'});
+rede = newff( Matriz, [9 3 1], {'tansig' 'tansig' 'purelin'});
 rede.trainParam.showWindow = true; 
 rede.trainParam.mu = 0.001;
 rede.trainParam.mu_dec = 0.1;
 rede.trainParam.mu_inc = 9;
-rede.trainParam.epochs = 70;%número de épocas desejadas
+rede.trainParam.epochs = 80;%número de épocas desejadas
 rede.trainParam.goal = 1e-07;%erro final desejado
 rede.trainParam.show = 20;
 NET = train(rede, entrada_treinamento, saida_treinamento);
@@ -219,12 +219,12 @@ for i = 1:1:quant_entradas
 end
 
 %---------------Treinamento da RNA----------------------------------------
-rede = newff( Matriz, [12 2 1], {'tansig' 'tansig' 'purelin'});
+rede = newff( Matriz, [12 3 1], {'tansig' 'tansig' 'purelin'});
 rede.trainParam.showWindow = true; 
 rede.trainParam.mu = 0.001;
 rede.trainParam.mu_dec = 0.1;
 rede.trainParam.mu_inc = 9;
-rede.trainParam.epochs = 50;%número de épocas desejadas
+rede.trainParam.epochs = 120;%número de épocas desejadas
 rede.trainParam.goal = 1e-07;%erro final desejado
 rede.trainParam.show = 20;
 NET = train(rede, entrada_treinamento, saida_treinamento);

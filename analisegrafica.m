@@ -74,6 +74,9 @@ hold off
 %% Verificando comportamento destoante
 clc
 clear all
+load('./faltas_polo_terra/L10R0.100.mat')
+plot(correnteretificadorpos.Data);
+hold on
 load('./faltas_polo_terra/L5R5.000.mat')
 plot(correnteretificadorpos.Data);
 hold on
@@ -94,10 +97,13 @@ hold on
 load('./faltas_polo_terra/L5R15.000.mat')
 plot(correnteretificadorpos.Data);
 hold on
-legend('L5R5.000.mat','L195R5.000.mat','L195R10.000.mat','L10R5.000.mat','L5R10.000.mat','L10R10.000.mat','L5R15.000.mat')
+legend('L10R0.100.mat','L5R5.000.mat','L195R5.000.mat','L195R10.000.mat','L10R5.000.mat','L5R10.000.mat','L10R10.000.mat','L5R15.000.mat')
 %% Verificando comportamento destoante
 clc
 clear all
+load('./faltas_polo_polo/L10R0.100.mat')
+plot(correnteretificadorpos.Data);
+hold on
 load('./faltas_polo_polo/L5R5.000.mat')
 plot(correnteretificadorpos.Data);
 hold on
@@ -118,7 +124,9 @@ hold on
 load('./faltas_polo_polo/L5R15.000.mat')
 plot(correnteretificadorpos.Data);
 hold on
-legend('L5R5.000.mat','L195R5.000.mat','L195R10.000.mat','L10R5.000.mat','L5R10.000.mat','L10R10.000.mat','L5R15.000.mat')
+load('./faltas_polo_polo/L190R150.000.mat')
+plot(correnteretificadorpos.Data);
+legend('L10R0.100.mat','L5R5.000.mat','L195R5.000.mat','L195R10.000.mat','L10R5.000.mat','L5R10.000.mat','L10R10.000.mat','L5R15.000.mat','L190R150.000.mat')
 
 
 

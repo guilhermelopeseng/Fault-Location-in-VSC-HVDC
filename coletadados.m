@@ -19,27 +19,19 @@ caminho = './faltas_polo_polo/';
 caminhoSave = './coleta_dados/primeiro_metodo_polo_polo.mat';
 
 %----------Loop para coleta-------------------------%
-for localizacao = 5:5:195
-    for resistencia = 55:5:100
-        % Obtenção do nome do arquivo da simulação
-        nameLoc = sprintf('L%.0f', localizacao);
+for localizacao = 10:10:190
+    nameLoc = sprintf('L%.0f', localizacao);
+    for resistencia = 5:5:150
         nameRes = sprintf('R%.3f', resistencia);
         nameCom = strcat(caminho,nameLoc, nameRes, mat);
-        %Obtenção dos dados referente ao arquivo
         if(exist(nameCom,'file') == 2)
-            
             load(nameCom);
-            
             base(1,cont) = max(correnteretificadorpos.Data);
-            
             base(2,cont) = min(correnteretificadorpos.Data);
-            
             base(3,cont) = mean(correnteretificadorpos.Data(1:2700,1));
             base(4,cont) = mean(correnteretificadorpos.Data(2700:4725,1));
             base(5,cont) = mean(correnteretificadorpos.Data(4725:13500,1));
-          
             base(6,cont) = var(correnteretificadorpos.Data);
-            
             Ym = correnteretificadorpos.Data(1:2700,1);
             Yq = Ym.^2;
             Ym1 = correnteretificadorpos.Data(2700:4725,1);
@@ -49,10 +41,8 @@ for localizacao = 5:5:195
             base(7,cont) = sum(Yq(:));
             base(8,cont) = sum(Yq1(:));
             base(9,cont) = sum(Yq2(:));
-            
             distanciaFaltas(:,cont) = localizacao/200;
             resistenciaFaltas(:,cont) = resistencia;
-            
             cont=cont+1;
         end
     end
@@ -73,27 +63,19 @@ caminho = './faltas_polo_terra/';
 caminhoSave = './coleta_dados/primeiro_metodo_polo_terra.mat';
 
 %----------Loop para coleta-------------------------%
-for localizacao = 5:5:195
-    for resistencia = 55:5:100
-        % Obtenção do nome do arquivo da simulação
-        nameLoc = sprintf('L%.0f', localizacao);
+for localizacao = 10:10:190
+    nameLoc = sprintf('L%.0f', localizacao);
+    for resistencia = 5:5:150
         nameRes = sprintf('R%.3f', resistencia);
         nameCom = strcat(caminho,nameLoc, nameRes, mat);
-        %Obtenção dos dados referente ao arquivo
         if(exist(nameCom,'file') == 2)
-            
             load(nameCom);
-            
             base(1,cont) = max(correnteretificadorpos.Data);
-            
             base(2,cont) = min(correnteretificadorpos.Data);
-            
             base(3,cont) = mean(correnteretificadorpos.Data(1:2700,1));
             base(4,cont) = mean(correnteretificadorpos.Data(2700:4725,1));
             base(5,cont) = mean(correnteretificadorpos.Data(4725:13500,1));
-          
             base(6,cont) = var(correnteretificadorpos.Data);
-            
             Ym = correnteretificadorpos.Data(1:2700,1);
             Yq = Ym.^2;
             Ym1 = correnteretificadorpos.Data(2700:4725,1);
@@ -103,10 +85,8 @@ for localizacao = 5:5:195
             base(7,cont) = sum(Yq(:));
             base(8,cont) = sum(Yq1(:));
             base(9,cont) = sum(Yq2(:));
-            
             distanciaFaltas(:,cont) = localizacao/200;
             resistenciaFaltas(:,cont) = resistencia;
-            
             cont=cont+1;
         end
     end
@@ -125,29 +105,20 @@ mat = '.mat';
 caminho_polo_terra = './faltas_polo_terra/';
 caminho_polo_polo = './faltas_polo_polo/';
 caminhoSave = './coleta_dados/primeiro_metodo.mat';
-
 %----------Loop para coleta-------------------------%
-for localizacao = 5:5:195
-    for resistencia = 55:5:100
-        % Obtenção do nome do arquivo da simulação
-        nameLoc = sprintf('L%.0f', localizacao);
+for localizacao = 10:10:190
+    nameLoc = sprintf('L%.0f', localizacao);
+    for resistencia = 5:5:150
         nameRes = sprintf('R%.3f', resistencia);
         nameCom = strcat(caminho_polo_terra,nameLoc, nameRes, mat);
-        %Obtenção dos dados referente ao arquivo polo_terra
         if(exist(nameCom,'file') == 2)
-            
             load(nameCom);
-            
             base(1,cont) = max(correnteretificadorpos.Data);
-            
             base(2,cont) = min(correnteretificadorpos.Data);
-            
             base(3,cont) = mean(correnteretificadorpos.Data(1:2700,1));
             base(4,cont) = mean(correnteretificadorpos.Data(2700:4725,1));
             base(5,cont) = mean(correnteretificadorpos.Data(4725:13500,1));
-          
             base(6,cont) = var(correnteretificadorpos.Data);
-            
             Ym = correnteretificadorpos.Data(1:2700,1);
             Yq = Ym.^2;
             Ym1 = correnteretificadorpos.Data(2700:4725,1);
@@ -157,31 +128,19 @@ for localizacao = 5:5:195
             base(7,cont) = sum(Yq(:));
             base(8,cont) = sum(Yq1(:));
             base(9,cont) = sum(Yq2(:));
-            
             distanciaFaltas(:,cont) = localizacao/200;
             resistenciaFaltas(:,cont) = resistencia;
-            
             cont=cont+1;
         end
-        % Obtenção do nome do arquivo da simulação
-        nameLoc = sprintf('L%.0f', localizacao);
-        nameRes = sprintf('R%.3f', resistencia);
         nameCom = strcat(caminho_polo_polo,nameLoc, nameRes, mat);
-        %Obtenção dos dados referente ao arquivo polo_polo
         if(exist(nameCom,'file') == 2)
-            
             load(nameCom);
-            
             base(1,cont) = max(correnteretificadorpos.Data);
-            
             base(2,cont) = min(correnteretificadorpos.Data);
-            
             base(3,cont) = mean(correnteretificadorpos.Data(1:2700,1));
             base(4,cont) = mean(correnteretificadorpos.Data(2700:4725,1));
             base(5,cont) = mean(correnteretificadorpos.Data(4725:13500,1));
-          
             base(6,cont) = var(correnteretificadorpos.Data);
-            
             Ym = correnteretificadorpos.Data(1:2700,1);
             Yq = Ym.^2;
             Ym1 = correnteretificadorpos.Data(2700:4725,1);
@@ -191,10 +150,8 @@ for localizacao = 5:5:195
             base(7,cont) = sum(Yq(:));
             base(8,cont) = sum(Yq1(:));
             base(9,cont) = sum(Yq2(:));
-            
             distanciaFaltas(:,cont) = localizacao/200;
             resistenciaFaltas(:,cont) = resistencia;
-            
             cont=cont+1;
         end
     end
@@ -213,31 +170,26 @@ caminho = './faltas_polo_polo/';
 caminhoSave = './coleta_dados/segundo_metodo_polo_polo.mat';
 cont = 1;
 %--------------------Loop para coleta dos dados------------------%
-for localizacao = 5:5:195
-    for resistencia = 55:5:100
-        % Obtenção do nome do arquivo da simulação
-        nameLoc = sprintf('L%.0f', localizacao);
+for localizacao = 10:10:190
+    nameLoc = sprintf('L%.0f', localizacao);
+    for resistencia = 5:5:150
         nameRes = sprintf('R%.3f', resistencia);
         nameCom = strcat(caminho,nameLoc, nameRes, mat);
-        %Obtenção dos dados referente ao arquivo
         if(exist(nameCom,'file') == 2)
             load(nameCom);
             c = wpdec(correnteretificadorpos.Data(2700:3067,1),4,'db1');
-           %Obstenção dos coeficientes da wavelet transform
-           for k = 0:1:15
-               base(k+1,cont) = max(wpcoef(c, [4 k]));
-           end
-            
+            %Obstenção dos coeficientes da wavelet transform
+            for k = 0:1:15
+                base(k+1,cont) = max(wpcoef(c, [4 k]));
+            end
+       
             distanciaFaltas(:,cont) = localizacao/200;
             resistenciaFaltas(:,cont) = resistencia;
-            
             cont=cont+1;
         end
     end
 end
-
 save(caminhoSave)
-
 %% 2 método - RNA e Wavelet Transform - Faltas Polo Terra
 
 %------------------Variáveis para entrada da RNA ---------------------%
@@ -251,31 +203,26 @@ caminho = './faltas_polo_terra/';
 caminhoSave = './coleta_dados/segundo_metodo_polo_terra.mat';
 cont = 1;
 %--------------------Loop para coleta dos dados------------------%
-for localizacao = 5:5:195
-    for resistencia = 55:5:100
-        % Obtenção do nome do arquivo da simulação
-        nameLoc = sprintf('L%.0f', localizacao);
+for localizacao = 10:10:190
+    nameLoc = sprintf('L%.0f', localizacao);
+    for resistencia = 5:5:50
         nameRes = sprintf('R%.3f', resistencia);
         nameCom = strcat(caminho,nameLoc, nameRes, mat);
-        %Obtenção dos dados referente ao arquivo
         if(exist(nameCom,'file') == 2)
             load(nameCom);
             c = wpdec(correnteretificadorpos.Data(2700:3067,1),4,'db1');
-           %Obstenção dos coeficientes da wavelet transform
-           for k = 0:1:15
-               base(k+1,cont) = max(wpcoef(c, [4 k]));
-           end
-            
+            %Obstenção dos coeficientes da wavelet transform
+            for k = 0:1:15
+                base(k+1,cont) = max(wpcoef(c, [4 k]));
+            end
+       
             distanciaFaltas(:,cont) = localizacao/200;
             resistenciaFaltas(:,cont) = resistencia;
-            
             cont=cont+1;
         end
     end
 end
-
 save(caminhoSave)
-
 %% 2 método - RNA e Wavelet Transform - Faltas Polo Terra e Polo Polo
 
 %------------------Variáveis para entrada da RNA ---------------------%
@@ -290,49 +237,39 @@ caminho_polo_polo = './faltas_polo_polo/';
 caminhoSave = './coleta_dados/segundo_metodo.mat';
 cont = 1;
 %--------------------Loop para coleta dos dados------------------%
-for localizacao = 5:5:195
-    for resistencia = 55:5:100
-        % Obtenção do nome do arquivo da simulação
-        nameLoc = sprintf('L%.0f', localizacao);
+for localizacao = 10:10:190
+    nameLoc = sprintf('L%.0f', localizacao);
+    for resistencia = 5:5:150
         nameRes = sprintf('R%.3f', resistencia);
         nameCom = strcat(caminho_polo_terra,nameLoc, nameRes, mat);
-        %Obtenção dos dados referente ao arquivo
         if(exist(nameCom,'file') == 2)
             load(nameCom);
             c = wpdec(correnteretificadorpos.Data(2700:3067,1),4,'db1');
-           %Obstenção dos coeficientes da wavelet transform
-           for k = 0:1:15
-               base(k+1,cont) = max(wpcoef(c, [4 k]));
-           end
-            
+            %Obstenção dos coeficientes da wavelet transform
+            for k = 0:1:15
+                base(k+1,cont) = max(wpcoef(c, [4 k]));
+            end
+       
             distanciaFaltas(:,cont) = localizacao/200;
             resistenciaFaltas(:,cont) = resistencia;
-            
             cont=cont+1;
         end
-        % Obtenção do nome do arquivo da simulação
-        nameLoc = sprintf('L%.0f', localizacao);
-        nameRes = sprintf('R%.3f', resistencia);
         nameCom = strcat(caminho_polo_polo,nameLoc, nameRes, mat);
-        %Obtenção dos dados referente ao arquivo polo polo
         if(exist(nameCom,'file') == 2)
             load(nameCom);
             c = wpdec(correnteretificadorpos.Data(2700:3067,1),4,'db1');
-           %Obstenção dos coeficientes da wavelet transform
-           for k = 0:1:15
-               base(k+1,cont) = max(wpcoef(c, [4 k]));
-           end
-            
+            %Obstenção dos coeficientes da wavelet transform
+            for k = 0:1:15
+                base(k+1,cont) = max(wpcoef(c, [4 k]));
+            end
+       
             distanciaFaltas(:,cont) = localizacao/200;
             resistenciaFaltas(:,cont) = resistencia;
-            
             cont=cont+1;
         end
     end
 end
-
 save(caminhoSave)
-
 %% 3 método - RNA e Coeficientes Mel Cepstrais - Faltas Polo Polo
 % Adicionar Path do MFCC
 addpath(genpath('C:\Users\guilh\OneDrive\Documentos\IC 2021\Fault-Location-in-VSC-HVDC\rastamat'));
@@ -348,30 +285,25 @@ inicio = 2700; % inicio da janela escolhida
 fim = 3214; % fim da janela escolhida
 
 resistenciaFaltas = [];
+resistenciaEscolhidas = [5 10 30 50 100 150];
 mat = '.mat';
 caminho = './faltas_polo_polo/';
 caminhoSave = './coleta_dados/terceiro_metodo_polo_polo.mat';
 cont = 1;
 
-for localizacao = 5:5:195
-    for resistencia = 55:5:100
-        % Obtenção do nome do arquivo da simulação
+for localizacao = 10:10:190
+    for resistencia = 5:5:150
         nameLoc = sprintf('L%.0f', localizacao);
         nameRes = sprintf('R%.3f', resistencia);
         nameCom = strcat(caminho,nameLoc, nameRes, mat);
-        %Obtenção dos dados referente ao arquivo
         if(exist(nameCom,'file') == 2)
             load(nameCom);
-            
             sinal = correnteretificadorpos.Data(inicio:fim,1);
             time = (correnteretificadorpos.Time(fim)-correnteretificadorpos.Time(inicio));
             [mm,aspc] = melfcc(sinal, fs, 'maxfreq', fs/2, 'numcep', numCep, 'dcttype', 1, 'wintime', time, 'hoptime', time/2, 'preemph', 0);
-            
             base(:,cont) = mm;
-            
             distanciaFaltas(:,cont) = localizacao/200;
             resistenciaFaltas(:,cont) = resistencia;
-            
             cont=cont+1;
         end
     end
