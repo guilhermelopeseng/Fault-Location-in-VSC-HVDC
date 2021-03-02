@@ -172,12 +172,12 @@ cont = 1;
 %--------------------Loop para coleta dos dados------------------%
 for localizacao = 10:10:190
     nameLoc = sprintf('L%.0f', localizacao);
-    for resistencia = 5:5:150
+    for resistencia = 50:5:150
         nameRes = sprintf('R%.3f', resistencia);
         nameCom = strcat(caminho,nameLoc, nameRes, mat);
         if(exist(nameCom,'file') == 2)
             load(nameCom);
-            c = wpdec(correnteretificadorpos.Data(2700:3067,1),4,'sym2');
+            c = wpdec(correnteretificadorpos.Data(2700:3067,1),4,'db4');
             %Obstenção dos coeficientes da wavelet transform
             inicial_valores = wpcoef(c, [0 0]);
             quadrado_inicial_valores = inicial_valores.^2;
@@ -299,7 +299,7 @@ caminhoSave = './coleta_dados/terceiro_metodo_polo_polo.mat';
 cont = 1;
 
 for localizacao = 10:10:190
-    for resistencia = 5:5:150
+    for resistencia = 50:5:150
         nameLoc = sprintf('L%.0f', localizacao);
         nameRes = sprintf('R%.3f', resistencia);
         nameCom = strcat(caminho,nameLoc, nameRes, mat);
