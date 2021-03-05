@@ -57,8 +57,8 @@ clc
 clear all
 caminho = './faltas_polo_terra/';
 mat = '.mat';
-for localizacao = 20:5:180
-    for resistencia = 5:5:10
+for localizacao = 10:10:190
+    for resistencia = 5:5:150
         % Obtenção do nome do arquivo da simulação
         nameLoc = sprintf('L%.0f', localizacao);
         nameRes = sprintf('R%.3f', resistencia);
@@ -128,5 +128,5 @@ load('./faltas_polo_polo/L190R150.000.mat')
 plot(correnteretificadorpos.Data);
 legend('L10R0.100.mat','L5R5.000.mat','L195R5.000.mat','L195R10.000.mat','L10R5.000.mat','L5R10.000.mat','L10R10.000.mat','L5R15.000.mat','L190R150.000.mat')
 
-
+%%
 

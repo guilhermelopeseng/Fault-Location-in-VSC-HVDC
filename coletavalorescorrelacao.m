@@ -9,6 +9,7 @@ caminho = './faltas_polo_polo/';
 caminhoSave = './coleta_dados/correlacao_metodo.mat';
 mat = '.mat';
 cont = 1;
+resistenciaValores = [5 10 30 50 100 150 200]; 
 energia = [3 5 6 7 9 10 11 12 13 14];
 maximo = [7 11 13 14];
 mfcc = [4 13 14];

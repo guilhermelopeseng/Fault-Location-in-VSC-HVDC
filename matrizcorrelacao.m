@@ -7,11 +7,13 @@ clc
 addpath(genpath('C:\Users\guilh\OneDrive\Documentos\IC 2021\Fault-Location-in-VSC-HVDC\rastamat'));
 caminho = './faltas_polo_polo/';
 mat = '.mat';
+resistenciaValores = [5 10 30 50 100 150 200];
 cont = 1;
 %------------ Loop para coleta dos valores de energia da twp -----------
 for localizacao = 10:10:190
     nameLoc = sprintf('L%.0f', localizacao);
-    for resistencia = 50:5:150
+    for valores = 1:1:length(resistenciaValores)
+        resistencia = resistenciaValores(valores);
         nameRes = sprintf('R%.3f', resistencia);
         nameCom = strcat(caminho,nameLoc, nameRes, mat);
         if(exist(nameCom,'file') == 2)
@@ -46,7 +48,8 @@ fim = 3214; % fim da janela escolhida
 cont = 1;
 %---------------- Loop para os valores do MFCC -------------------------
 for localizacao = 10:10:190
-    for resistencia = 50:5:150
+    for valores = 1:1:length(resistenciaValores)
+        resistencia = resistenciaValores(valores);
         nameLoc = sprintf('L%.0f', localizacao);
         nameRes = sprintf('R%.3f', resistencia);
         nameCom = strcat(caminho,nameLoc, nameRes, mat);
