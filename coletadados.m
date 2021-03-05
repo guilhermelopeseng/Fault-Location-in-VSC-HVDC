@@ -177,7 +177,7 @@ for localizacao = 10:10:190
         nameCom = strcat(caminho,nameLoc, nameRes, mat);
         if(exist(nameCom,'file') == 2)
             load(nameCom);
-            c = wpdec(correnteretificadorpos.Data(2700:3067,1),4,'db4');
+            c = wpdec(correnteretificadorpos.Data(2700:3067,1),4,'db1');
             %Obstenção dos coeficientes da wavelet transform
             inicial_valores = wpcoef(c, [0 0]);
             quadrado_inicial_valores = inicial_valores.^2;
@@ -212,17 +212,24 @@ cont = 1;
 %--------------------Loop para coleta dos dados------------------%
 for localizacao = 10:10:190
     nameLoc = sprintf('L%.0f', localizacao);
-    for resistencia = 5:5:50
+    for resistencia = 50:5:150
         nameRes = sprintf('R%.3f', resistencia);
         nameCom = strcat(caminho,nameLoc, nameRes, mat);
         if(exist(nameCom,'file') == 2)
             load(nameCom);
             c = wpdec(correnteretificadorpos.Data(2700:3067,1),4,'db1');
             %Obstenção dos coeficientes da wavelet transform
+            inicial_valores = wpcoef(c, [0 0]);
+            quadrado_inicial_valores = inicial_valores.^2;
+            total_inical_valores = sum(quadrado_inicial_valores(:));
+            
             for k = 0:1:15
-                base(k+1,cont) = max(wpcoef(c, [4 k]));
+                quarta_camada = wpcoef(c, [4 k]);
+                quadrado_quarta_camada = quarta_camada.^2;
+                total_quarta_camada = sum(quadrado_quarta_camada(:));
+                base(k+1,cont) = total_quarta_camada/total_inical_valores;
             end
-       
+            
             distanciaFaltas(:,cont) = localizacao/200;
             resistenciaFaltas(:,cont) = resistencia;
             cont=cont+1;
