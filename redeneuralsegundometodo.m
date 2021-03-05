@@ -14,11 +14,16 @@ load('./coleta_dados/segundo_metodo_polo_polo');
 Matriz = [];
 entrada_treinamento = [];
 entrada_teste = [];
-quant_entradas = 16;
+quant_entradas = 32;
 previsao = [];
 erro = [];
 
 % ------------------- Normalização da matriz de entrada ------------------
+for i = 17:1:quant_entradas
+    for j = 1:1:length(base)
+        base(i,j) = (base(i,j) - min(base(i,:)))/( max(base(i,:))- min(base(i,:)) );
+    end
+end
 
 base(quant_entradas+1,:) = distanciaFaltas;
 base(quant_entradas+2,:) = resistenciaFaltas;
@@ -51,7 +56,7 @@ for i = 1:1:quant_entradas
 end
 
 %---------------Treinamento da RNA----------------------------------------
-rede = newff( Matriz, [18 3 1], {'tansig' 'tansig' 'purelin'});
+rede = newff( Matriz, [21 3 1], {'tansig' 'tansig' 'purelin'});
 rede.trainParam.showWindow = true; 
 rede.trainParam.mu = 0.001;
 rede.trainParam.mu_dec = 0.1;
@@ -90,11 +95,16 @@ load('./coleta_dados/segundo_metodo_polo_terra');
 Matriz = [];
 entrada_treinamento = [];
 entrada_teste = [];
-quant_entradas = 16;
+quant_entradas = 32;
 previsao = [];
 erro = [];
 
 % ------------------- Normalização da matriz de entrada ------------------
+for i = 17:1:quant_entradas
+    for j = 1:1:length(base)
+        base(i,j) = (base(i,j) - min(base(i,:)))/( max(base(i,:))- min(base(i,:)) );
+    end
+end
 base(quant_entradas+1,:) = distanciaFaltas;
 base(quant_entradas+2,:) = resistenciaFaltas;
 % -------------------Separação dos dados entre treinamento e teste -------
@@ -126,12 +136,12 @@ for i = 1:1:quant_entradas
 end
 
 %---------------Treinamento da RNA----------------------------------------
-rede = newff( Matriz, [18 3 1], {'tansig' 'tansig' 'purelin'});
+rede = newff( Matriz, [21 3 1], {'tansig' 'tansig' 'purelin'});
 rede.trainParam.showWindow = true; 
 rede.trainParam.mu = 0.001;
 rede.trainParam.mu_dec = 0.1;
 rede.trainParam.mu_inc = 9;
-rede.trainParam.epochs = 70;%número de épocas desejadas
+rede.trainParam.epochs = 30;%número de épocas desejadas
 rede.trainParam.goal = 1e-12;%erro final desejado
 rede.trainParam.show = 20;
 NET = train(rede, entrada_treinamento, saida_treinamento);

@@ -172,7 +172,7 @@ cont = 1;
 %--------------------Loop para coleta dos dados------------------%
 for localizacao = 10:10:190
     nameLoc = sprintf('L%.0f', localizacao);
-    for resistencia = 50:5:150
+    for resistencia = 5:5:150
         nameRes = sprintf('R%.3f', resistencia);
         nameCom = strcat(caminho,nameLoc, nameRes, mat);
         if(exist(nameCom,'file') == 2)
@@ -188,6 +188,9 @@ for localizacao = 10:10:190
                 quadrado_quarta_camada = quarta_camada.^2;
                 total_quarta_camada = sum(quadrado_quarta_camada(:));
                 base(k+1,cont) = total_quarta_camada/total_inical_valores;
+            end
+            for k = 0:1:15
+                base(k+17,cont) = max(wpcoef(c, [4 k]));
             end
             
             distanciaFaltas(:,cont) = localizacao/200;
@@ -228,6 +231,9 @@ for localizacao = 10:10:190
                 quadrado_quarta_camada = quarta_camada.^2;
                 total_quarta_camada = sum(quadrado_quarta_camada(:));
                 base(k+1,cont) = total_quarta_camada/total_inical_valores;
+            end
+            for k = 0:1:15
+                base(k+17,cont) = max(wpcoef(c, [4 k]));
             end
             
             distanciaFaltas(:,cont) = localizacao/200;
