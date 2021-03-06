@@ -23,7 +23,14 @@ erro = [];
 base(quant_entradas+1,:) = distanciaFaltas;
 base(quant_entradas+2,:) = resistenciaFaltas;
 % -------------------Separação dos dados entre treinamento e teste -------
-[treinamento, validacao, teste] = divideint(base,0.8,0,0.2);
+dataA = base';  % obtêm-se a matriz base
+p = .8;      % proporção do treinamento 
+N = size(dataA,1);  % total do número de linhas 
+tf = false(N,1);    % criação do index logico do vetor
+tf(1:round(p*N)) = true;     
+tf = tf(randperm(N));   % Escolha aleatoriamente os valores
+treinamento = dataA(tf,:)'; %Associa o vetor para o treinamento 
+teste = dataA(~tf,:)'; %O restante associa para o vetor teste
 
 %--------------------Organização dos dados de entrada para treinamento----
 for i = 1:1:quant_entradas
@@ -56,7 +63,7 @@ rede.trainParam.showWindow = true;
 rede.trainParam.mu = 0.001;
 rede.trainParam.mu_dec = 0.1;
 rede.trainParam.mu_inc = 9;
-rede.trainParam.epochs = 50;%número de épocas desejadas
+rede.trainParam.epochs = 60;%número de épocas desejadas
 rede.trainParam.goal = 1e-12;%erro final desejado
 rede.trainParam.show = 20;
 NET = train(rede, entrada_treinamento, saida_treinamento);
@@ -98,7 +105,14 @@ erro = [];
 base(quant_entradas+1,:) = distanciaFaltas;
 base(quant_entradas+2,:) = resistenciaFaltas;
 % -------------------Separação dos dados entre treinamento e teste -------
-[treinamento, validacao, teste] = divideint(base,0.8,0,0.2);
+dataA = base';  % obtêm-se a matriz base
+p = .8;      % proporção do treinamento 
+N = size(dataA,1);  % total do número de linhas 
+tf = false(N,1);    % criação do index logico do vetor
+tf(1:round(p*N)) = true;     
+tf = tf(randperm(N));   % Escolha aleatoriamente os valores
+treinamento = dataA(tf,:)'; %Associa o vetor para o treinamento 
+teste = dataA(~tf,:)'; %O restante associa para o vetor teste
 
 %--------------------Organização dos dados de entrada para treinamento----
 for i = 1:1:quant_entradas
