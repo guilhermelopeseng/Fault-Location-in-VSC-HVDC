@@ -172,7 +172,7 @@ cont = 1;
 %--------------------Loop para coleta dos dados------------------%
 for localizacao = 10:10:190
     nameLoc = sprintf('L%.0f', localizacao);
-    for resistencia = 5:5:150
+    for resistencia = 50:5:150
         nameRes = sprintf('R%.3f', resistencia);
         nameCom = strcat(caminho,nameLoc, nameRes, mat);
         if(exist(nameCom,'file') == 2)
