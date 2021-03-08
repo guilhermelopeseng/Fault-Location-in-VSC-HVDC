@@ -104,47 +104,58 @@ clear all
 load('./faltas_polo_polo/L10R0.100.mat')
 plot(correnteretificadorpos.Data);
 hold on
-load('./faltas_polo_polo/L5R5.000.mat')
+load('./faltas_polo_polo/L10R0.500.mat')
 plot(correnteretificadorpos.Data);
 hold on
-load('./faltas_polo_polo/L195R5.000.mat')
+load('./faltas_polo_polo/L10R1.000.mat')
 plot(correnteretificadorpos.Data);
 hold on
-load('./faltas_polo_polo/L195R10.000.mat')
+load('./faltas_polo_polo/L10R1.500.mat')
 plot(correnteretificadorpos.Data);
 hold on
-load('./faltas_polo_polo/L10R5.000.mat')
-plot(correnteretificadorpos.Data);
-load('./faltas_polo_polo/L5R10.000.mat')
+load('./faltas_polo_polo/L10R2.000.mat')
 plot(correnteretificadorpos.Data);
 hold on
-load('./faltas_polo_polo/L10R10.000.mat')
-plot(correnteretificadorpos.Data);
-hold on
-load('./faltas_polo_polo/L5R15.000.mat')
-plot(correnteretificadorpos.Data);
-hold on
-load('./faltas_polo_polo/L190R150.000.mat')
-plot(correnteretificadorpos.Data);
-legend('L10R0.100.mat','L5R5.000.mat','L195R5.000.mat','L195R10.000.mat','L10R5.000.mat','L5R10.000.mat','L10R10.000.mat','L5R15.000.mat','L190R150.000.mat')
+legend('L10R0.100.mat','L10R0.500.mat','L10R1.000.mat','L10R1.500.mat','L10R2.000.mat')
 
-%%
+%% Verificar a menor resistencia de falta a ser utilizada Polo Polo
 faltas = [0.1 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5];
 mat = '.mat';
 caminho = './faltas_polo_polo/';
 cont = 1;
-%--------------------Loop para coleta dos dados------------------%
-for localizacao = 5:5:195
+%--------------------Loop para verificação dos dados------------------%
+for k = 1:1:length(faltas)
+    % Para faltas no km 10
+    localizacao = 190;
     nameLoc = sprintf('L%.0f', localizacao);
-    for resistenciaValores = 1:1:length(faltas)
-        resistencia = faltas(resistenciaValores);
-        nameRes = sprintf('R%.3f', resistencia);
-        nameCom = strcat(caminho,nameLoc, nameRes, mat);
-        if(exist(nameCom,'file') == 2)
-            plot(correnteretificadorpos.Data);
-            hold on
-        end
+    resistencia = faltas(k);
+    nameRes = sprintf('R%.3f', resistencia);
+    nameCom = strcat(caminho,nameLoc, nameRes, mat);
+    if(exist(nameCom,'file') == 2)
+        load(nameCom);
+        plot(correnteretificadorpos.Data);
+        hold on
     end
 end
-            
+legend('Res = 0.1','Res = 0.5', 'Res = 1', 'Res = 1.5', 'Res = 2', 'Res = 2.5', 'Res = 3', 'Res = 3.5', 'Res = 4', 'Res = 4.5', 'Res = 5');
+%% Verificar a menor resistencia de falta a ser utilizada Polo Terra
+faltas = [0.1 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5];
+mat = '.mat';
+caminho = './faltas_polo_terra/';
+cont = 1;
+%--------------------Loop para verificação dos dados------------------%
 
+for resistenciaValores = 1:1:length(faltas)
+    % Para faltas no km 10
+    localizacao = 190;
+    nameLoc = sprintf('L%.0f', localizacao);
+    resistencia = faltas(resistenciaValores);
+    nameRes = sprintf('R%.3f', resistencia);
+    nameCom = strcat(caminho,nameLoc, nameRes, mat);
+    if(exist(nameCom,'file') == 2)
+        load(nameCom);
+        plot(correnteretificadorpos.Data);
+        hold on
+    end
+end
+legend('Res = 0.1','Res = 0.5', 'Res = 1', 'Res = 1.5', 'Res = 2', 'Res = 2.5', 'Res = 3', 'Res = 3.5', 'Res = 4', 'Res = 4.5', 'Res = 5');
