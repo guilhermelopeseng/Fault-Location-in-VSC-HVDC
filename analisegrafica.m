@@ -128,5 +128,23 @@ load('./faltas_polo_polo/L190R150.000.mat')
 plot(correnteretificadorpos.Data);
 legend('L10R0.100.mat','L5R5.000.mat','L195R5.000.mat','L195R10.000.mat','L10R5.000.mat','L5R10.000.mat','L10R10.000.mat','L5R15.000.mat','L190R150.000.mat')
 
-
+%%
+faltas = [0.1 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5];
+mat = '.mat';
+caminho = './faltas_polo_polo/';
+cont = 1;
+%--------------------Loop para coleta dos dados------------------%
+for localizacao = 5:5:195
+    nameLoc = sprintf('L%.0f', localizacao);
+    for resistenciaValores = 1:1:length(faltas)
+        resistencia = faltas(resistenciaValores);
+        nameRes = sprintf('R%.3f', resistencia);
+        nameCom = strcat(caminho,nameLoc, nameRes, mat);
+        if(exist(nameCom,'file') == 2)
+            plot(correnteretificadorpos.Data);
+            hold on
+        end
+    end
+end
+            
 
