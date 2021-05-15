@@ -126,7 +126,7 @@ cont = 1;
 %--------------------Loop para verificação dos dados------------------%
 for k = 1:1:length(faltas)
     % Para faltas no km 10
-    localizacao = 190;
+    localizacao = 5;
     nameLoc = sprintf('L%.0f', localizacao);
     resistencia = faltas(k);
     nameRes = sprintf('R%.3f', resistencia);
@@ -159,3 +159,23 @@ for resistenciaValores = 1:1:length(faltas)
     end
 end
 legend('Res = 0.1','Res = 0.5', 'Res = 1', 'Res = 1.5', 'Res = 2', 'Res = 2.5', 'Res = 3', 'Res = 3.5', 'Res = 4', 'Res = 4.5', 'Res = 5');
+
+%% Análise das resistências escolhidas
+resistenciasEscolhidas = [1, 5:5:50, 60:10:100, 150:50:300];
+
+mat = '.mat';
+caminho = './faltas_polo_polo/';
+cont = 1;
+for localizacao = 5:5:195
+    nameLoc = sprintf('L%.0f', localizacao);
+    for k = 1:1:length(resistenciasEscolhidas)
+        resistencia = resistenciasEscolhidas(k);
+        nameRes = sprintf('R%.3f', resistencia);
+        nameCom = strcat(caminho,nameLoc, nameRes, mat);
+        if(exist(nameCom,'file') == 2)
+            load(nameCom);
+            plot(correnteretificadorpos.Data);
+            hold on
+        end
+    end
+end

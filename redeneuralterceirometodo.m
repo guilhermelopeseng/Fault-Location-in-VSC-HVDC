@@ -8,7 +8,8 @@ clear all
 %% Treinamento da Rede Neural para faltas Polo Polo
 clc
 clear all
-load('./coleta_dados/terceiro_metodo_polo_polo');
+warning('off','all')
+load('./coleta_dados/novo_metodo_mfcc.mat');
 
 % -------------------- Variáveis Globais---------------------------------
 Matriz = [];
@@ -26,7 +27,14 @@ end
 base(numCep+1,:) = distanciaFaltas;
 base(numCep+2,:) = resistenciaFaltas;
 % -------------------Separação dos dados entre treinamento e teste -------
-[treinamento, validacao, teste] = divideint(base,0.8,0,0.2);
+dataA = base';  % obtêm-se a matriz base
+p = .8;      % proporção do treinamento 
+N = size(dataA,1);  % total do número de linhas 
+tf = false(N,1);    % criação do index logico do vetor
+tf(1:round(p*N)) = true;     
+tf = tf(randperm(N));   % Escolha aleatoriamente os valores
+treinamento = dataA(tf,:)'; %Associa o vetor para o treinamento 
+teste = dataA(~tf,:)'; %O restante associa para o vetor teste
 
 %--------------------Organização dos dados de entrada para treinamento----
 for i = 1:1:numCep
@@ -54,12 +62,12 @@ for i = 1:1:numCep
 end
 
 %---------------Treinamento da RNA----------------------------------------
-rede = newff( Matriz, [18 3 1], {'tansig' 'tansig' 'purelin'});
+rede = newff( Matriz, [12 3 1], {'tansig' 'tansig' 'purelin'});
 rede.trainParam.showWindow = true; 
 rede.trainParam.mu = 0.01;
 rede.trainParam.mu_dec = 0.1;
 rede.trainParam.mu_inc = 9;
-rede.trainParam.epochs = 20;%número de épocas desejadas
+rede.trainParam.epochs = 60;%número de épocas desejadas
 rede.trainParam.goal = 1e-20;%erro final desejado
 rede.trainParam.show = 20;
 NET = train(rede, entrada_treinamento, saida_treinamento);
@@ -82,12 +90,13 @@ erro_min = min(erro)
 erro_medio = sqrt(perform(NET, saida_teste, previsao))
 desvio_padrao = std(erro)
 
-save('./resultados_redes_neurais/terceiro_metodo_polo_polo.mat');
+save('./resultados_redes_neurais/novo_metodo_mfcc_resultado51.mat');
 
 %% Treinamento da Rede Neural para faltas Polo Terra
 clc
 clear all
-load('./coleta_dados/terceiro_metodo_polo_terra');
+warning('off','all')
+load('./coleta_dados/novo_metodo_mfcc_polo_terra.mat');
 
 % -------------------- Variáveis Globais---------------------------------
 Matriz = [];
@@ -105,7 +114,14 @@ end
 base(numCep+1,:) = distanciaFaltas;
 base(numCep+2,:) = resistenciaFaltas;
 % -------------------Separação dos dados entre treinamento e teste -------
-[treinamento, validacao, teste] = divideint(base,0.8,0,0.2);
+dataA = base';  % obtêm-se a matriz base
+p = .8;      % proporção do treinamento 
+N = size(dataA,1);  % total do número de linhas 
+tf = false(N,1);    % criação do index logico do vetor
+tf(1:round(p*N)) = true;     
+tf = tf(randperm(N));   % Escolha aleatoriamente os valores
+treinamento = dataA(tf,:)'; %Associa o vetor para o treinamento 
+teste = dataA(~tf,:)'; %O restante associa para o vetor teste
 
 %--------------------Organização dos dados de entrada para treinamento----
 for i = 1:1:numCep
@@ -133,13 +149,13 @@ for i = 1:1:numCep
 end
 
 %---------------Treinamento da RNA----------------------------------------
-rede = newff( Matriz, [15 3 1], {'tansig' 'tansig' 'purelin'});
+rede = newff( Matriz, [12 4 1], {'tansig' 'tansig' 'purelin'});
 rede.trainParam.showWindow = true; 
 rede.trainParam.mu = 0.01;
 rede.trainParam.mu_dec = 0.1;
 rede.trainParam.mu_inc = 9;
-rede.trainParam.epochs = 20;%número de épocas desejadas
-rede.trainParam.goal = 1e-12;%erro final desejado
+rede.trainParam.epochs = 60;%número de épocas desejadas
+rede.trainParam.goal = 1e-20;%erro final desejado
 rede.trainParam.show = 20;
 NET = train(rede, entrada_treinamento, saida_treinamento);
 
@@ -161,11 +177,11 @@ erro_min = min(erro)
 erro_medio = sqrt(perform(NET, saida_teste, previsao))
 desvio_padrao = std(erro)
 
-save('./resultados_redes_neurais/terceiro_metodo_polo_terra.mat');
+save('./resultados_redes_neurais/novo_metodo_mfcc_resultado_polo_terra.mat');
 %% Treinamento da Rede Neural para faltas Polo Terra e Polo Polo sem classificador
 clc
 clear all
-load('./coleta_dados/terceiro_metodo');
+load('./coleta_dados/novo_metodo_mfcc_total.mat');
 
 % -------------------- Variáveis Globais---------------------------------
 Matriz = [];
@@ -183,7 +199,14 @@ end
 base(numCep+1,:) = distanciaFaltas;
 base(numCep+2,:) = resistenciaFaltas;
 % -------------------Separação dos dados entre treinamento e teste -------
-[treinamento, validacao, teste] = divideint(base,0.8,0,0.2);
+dataA = base';  % obtêm-se a matriz base
+p = .8;      % proporção do treinamento 
+N = size(dataA,1);  % total do número de linhas 
+tf = false(N,1);    % criação do index logico do vetor
+tf(1:round(p*N)) = true;     
+tf = tf(randperm(N));   % Escolha aleatoriamente os valores
+treinamento = dataA(tf,:)'; %Associa o vetor para o treinamento 
+teste = dataA(~tf,:)'; %O restante associa para o vetor teste
 
 %--------------------Organização dos dados de entrada para treinamento----
 for i = 1:1:numCep
@@ -216,7 +239,7 @@ rede.trainParam.showWindow = true;
 rede.trainParam.mu = 0.01;
 rede.trainParam.mu_dec = 0.1;
 rede.trainParam.mu_inc = 9;
-rede.trainParam.epochs = 40;%número de épocas desejadas
+rede.trainParam.epochs = 60;%número de épocas desejadas
 rede.trainParam.goal = 1e-12;%erro final desejado
 rede.trainParam.show = 20;
 NET = train(rede, entrada_treinamento, saida_treinamento);
